@@ -6,7 +6,11 @@
 	<base href="<?php echo base_url();?>" />
 	<!-- Title line belo-->
 	<title><?php echo $this->config->item('company').' Limited '.$this->lang->line('').' ' ?></title>
+    <link rel='shortcut icon' type='image/x-icon' href='<?php echo base_url();?>/favicon.ico' />
 	<link rel="stylesheet" rev="stylesheet" href="<?php echo base_url();?>css/ospos.css" />
+    <link rel="stylesheet" rev="stylesheet" href="<?php echo base_url();?>css/bootstrap.css" />
+    <link rel="stylesheet" rev="stylesheet" href="<?php echo base_url();?>css/sb-admin.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" rev="stylesheet" href="<?php echo base_url();?>css/ospos_print.css"  media="print"/>
 	<script>BASE_URL = '<?php echo site_url(); ?>';</script>
 	<script src="<?php echo base_url();?>js/jquery-1.2.6.min.js" type="text/javascript" language="javascript" charset="UTF-8"></script>
@@ -34,38 +38,38 @@ html {
 
 </head>
 <body>
-<div id="menubar">
-	<div id="menubar_container">
-		<div id="menubar_company_info">
-		<span id="company_title"><?php echo $this->config->item('company'); ?></span><br />
-		<span style='font-size:8pt;'><?php echo $this->lang->line('common_powered_by').'  Biashara Point Of Sale'; ?></span>
-	</div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="<?php echo site_url("/");?>"><?php echo $this->config->item('company'); ?></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <?php
+                foreach($allowed_modules->result() as $module) {
+                    if ($module->module_id != 'giftcards'){
+                        ?>
 
-		<div id="menubar_navigation">
-			<?php
-			foreach($allowed_modules->result() as $module)
-			{
-			?>
-			<div class="menu_item">
-				<a href="<?php echo site_url("$module->module_id");?>">
-				<img src="<?php echo base_url().'images/menubar/'.$module->module_id.'.png';?>" border="0" alt="Menubar Image" /></a><br />
-				<a href="<?php echo site_url("$module->module_id");?>"><?php echo $this->lang->line("module_".$module->module_id) ?></a>
-			</div>
-			<?php
-			}
-			?>
-		</div>
-
-		<div id="menubar_footer">
-		<?php echo $this->lang->line('common_welcome')." $user_info->first_name $user_info->last_name! | "; ?>
-		<?php echo anchor("home/logout",$this->lang->line("common_logout")); ?>
-		</div>
-
-		<div id="menubar_date">
-		<?php echo date('F d, Y h:i a') ?>
-		</div>
-
-	</div>
-</div>
-<div id="content_area_wrapper">
+                        <li><a href="<?php echo site_url("$module->module_id");?>"><?php echo $this->lang->line("module_" . $module->module_id) ?></a>
+                    </li>
+                <?php
+                }
+                }
+                ?>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+               <li> <?php echo anchor("home/logout",$this->lang->line("common_logout")); ?></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div id="content_area_wrapper" style="margin-top: 5%">
+    <p class="pull-right"><?php echo $this->lang->line('common_welcome')." $user_info->first_name $user_info->last_name!"; ?>
+    </p>
 <div id="content_area">
