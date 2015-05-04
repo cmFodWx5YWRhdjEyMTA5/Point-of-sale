@@ -41,3 +41,16 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.idea
+.DS_Store
+app/.DS_Store
+/bootstrap/compiled.php
+composer.phar
+composer.lock
+npm-debug.log
+.env.*.php
+.env.php
+.DS_Store
+.idea
+Thumbs.db
+workbench/*
