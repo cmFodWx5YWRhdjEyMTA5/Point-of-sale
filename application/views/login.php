@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-<h3 style="text-transform: capitalize; margin-bottom: 10px">Biashara <?php echo $this->config->item('application_version'); ?></h3>
+<h3 style="text-transform: capitalize; margin-bottom: 10px">Biashara Point Of Sale <?php echo $this->config->item('application_version'); ?></h3>
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
         <div class="panel panel-primary">
